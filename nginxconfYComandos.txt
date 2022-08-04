@@ -1,0 +1,33 @@
+Nginx conf:
+ events {}
+http {
+      include mime.types;
+      default_type application/octet-stream;
+      upstream node_app {
+                         server 127.0.0.1:8081;
+                         
+      }
+      upstream node_cluster{
+			                server 127.0.0.1:8082
+                            server 127.0.0.1:8083;
+                            server 127.0.0.1:8084;
+                            server 127.0.0.1:8085;
+      }
+      server {
+               listen 80;
+               server_name nginx_node;
+               root ../pablo-de-la-torre-desafio-clase-30/public;
+               location /datos/ {proxy_pass http://node_app;
+               }
+	           location /api/randoms {proxy_pass http://node_cluster;
+               }	 
+      }
+}
+
+Comandos:
+Para iniciar un puerto con forever: "forever start servidor.js 4000 (4000 es un numero de puerto puede ser cualquier otro)
+Para listar procesos con forever : "forever list"
+comandos pm2: 
+Para listar procesos: pm2 list
+pm2 start server.js --name="servidor1" --watch -- 8081
+pm2 start server.js --name="servidor2" --watch -- 8082 -i 4
