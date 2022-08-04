@@ -80,6 +80,8 @@ app.set('view engine','ejs')
 
 app.get('/',compression(),(req,res) => {
     if(req.session.nombre) {
+        logConsole.info(`${req.url}`)
+        logConsole.info(`${req.method}`)
         res.render('index', {
             title:"Agregue un producto",
             nombre: req.session.nombre
@@ -125,7 +127,7 @@ io.on('connection',(socket)=>{
 const PORT = parseInt(process.argv[2]) || 8080
     const server = httpServer.listen(process.env.PORT, () => {
     console.log(`servidor escuchando en el puerto ${process.env.PORT}`)
-    logConsole.info()
-    logConsole.warn()
-    logConsole.error("Error")
+    // logConsole.info()
+    // logConsole.warn()
+    // logConsole.error("Error")
 })
