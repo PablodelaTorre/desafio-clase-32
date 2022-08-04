@@ -5,6 +5,8 @@ import { usuarios } from "./registro.js";
 const router = Router();
 
 router.get("/", (req, res) => {
+    logConsole.info(`${req.url}`)
+    logConsole.info(`${req.method}`)
     res.render("./partials/login");
 });
 

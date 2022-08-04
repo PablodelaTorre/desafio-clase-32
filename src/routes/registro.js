@@ -6,6 +6,8 @@ const router = Router();
 export const usuarios = []
 
 router.get("/", (req, res) => {
+    logConsole.info(`${req.url}`)
+    logConsole.info(`${req.method}`)
     res.render("./partials/registro");
 });
 

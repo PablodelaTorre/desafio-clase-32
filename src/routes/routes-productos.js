@@ -56,6 +56,9 @@ const containerProductos = new Container()
 // })
 
 router.get('/',(req,res) => {
+    logConsole.info(`${req.url}`)
+    logConsole.info(`${req.method}`)
+    logError.error('Error')
     products = containerProductos.devolverP()
     res.render('./partials/productos.ejs', {
         title:"Agregue un producto",

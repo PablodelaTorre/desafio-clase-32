@@ -15,6 +15,9 @@ function adminOrClient(req,res,next){
 }
 
 router.get('/', async (req,res) => {
+    logConsole.info(`${req.url}`)
+    logConsole.info(`${req.method}`)
+    logError.error('Error')
     const messages = await api.findAll()
     res.json(products)
 })

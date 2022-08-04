@@ -25,6 +25,10 @@ import infoRoutes from "./src/routes/info.js"
 import getRandom from "./src/routes/apiRandom.js"
 import 'dotenv/config'
 import passport from 'passport';
+import compression from 'compression';
+import { logWarn } from './logger.js';
+import { logError } from './logger.js';
+import { logConsole } from './logger.js';
 
 // yargs 
 
@@ -74,7 +78,7 @@ app.use('/api/random',getRandom)
 app.set('views','./src/views')
 app.set('view engine','ejs')
 
-app.get('/',(req,res) => {
+app.get('/',compression(),(req,res) => {
     if(req.session.nombre) {
         res.render('index', {
             title:"Agregue un producto",
@@ -83,6 +87,11 @@ app.get('/',(req,res) => {
     } else {
         res.redirect("/login");
     }
+})
+
+app.get('*', (req,res)=>{
+    logWarn.warn(`URL inexistente ${req.url}`)
+    res.send("URL inexistente")
 })
 
 // socket io
@@ -112,7 +121,11 @@ io.on('connection',(socket)=>{
 //     console.log(`Server on port ${PORT}`)
 // })
 
+
 const PORT = parseInt(process.argv[2]) || 8080
     const server = httpServer.listen(process.env.PORT, () => {
     console.log(`servidor escuchando en el puerto ${process.env.PORT}`)
+    logConsole.info()
+    logConsole.warn()
+    logConsole.error("Error")
 })
