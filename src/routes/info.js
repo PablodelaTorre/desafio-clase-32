@@ -2,6 +2,7 @@ import { Router } from "express";
 import process from 'process'
 import os from 'os'
 import compression from "compression";
+import { logConsole } from "../../logger.js";
 
 const router = Router();
 

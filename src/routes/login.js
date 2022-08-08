@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { usuarios } from "./registro.js";
+import { logConsole } from "../../logger.js";
 //import passport from "passport";
 
 const router = Router();

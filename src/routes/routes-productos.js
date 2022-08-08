@@ -1,5 +1,8 @@
 import { Router } from 'express'
 import { productos } from '../../servidor.js'
+import { logConsole } from '../../logger.js'
+import { logError } from '../../logger.js'
+
 const router = Router()
 
 class Container {

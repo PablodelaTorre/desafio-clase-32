@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { fork } from "child_process";
+import { logConsole } from "../../logger.js";
 const router = Router()
 
 router.get("/", (req, res) => {

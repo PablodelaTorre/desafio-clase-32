@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import { mensajesDao as api } from '../daos/index.js';
 import { mensajes } from '../../servidor.js';
+import { logConsole } from "../../logger.js";
+import { logError } from '../../logger.js';
 const router = Router()
 
 
