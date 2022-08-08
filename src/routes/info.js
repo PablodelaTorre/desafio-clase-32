@@ -2,6 +2,7 @@ import { Router } from "express";
 import process from 'process'
 import os from 'os'
 import compression from "compression";
+import cluster from "cluster";
 import { logConsole } from "../../logger.js";
 
 const router = Router();
@@ -13,6 +14,14 @@ const proceso = {"Directorio de ejecución":process.cwd(),"ID del proceso":proce
 //     logConsole.info(`${req.method}`)
 //     res.send({proceso});
 // });
+
+// if (cluster.isMaster) {
+//     console.log("Master")
+//     cluster.fork()
+// } else {
+
+// }
+
 
 router.get("/", compression(),(req, res) => {
     logConsole.info(`${req.url}`)
