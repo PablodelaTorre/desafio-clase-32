@@ -123,10 +123,18 @@ io.on('connection',(socket)=>{
 //     console.log(`Server on port ${PORT}`)
 // })
 
-const PORT = parseInt(process.argv[2]) || 8080
-    const server = httpServer.listen(process.env.PORT, () => {
-    console.log(`servidor escuchando en el puerto ${process.env.PORT}`)
+// const PORT = parseInt(process.argv[2]) || 8080
+//     const server = httpServer.listen(process.env.PORT, () => {
+//     console.log(`servidor escuchando en el puerto ${process.env.PORT}`)
     // logConsole.info()
     // logConsole.warn()
     // logConsole.error("Error")
+// })
+
+//heroku
+
+const PORT = process.env.PORT || 8080
+
+app.listen(PORT, ()=>{
+    console.log(`Servidor en puerto ${PORT}`)
 })
