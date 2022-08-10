@@ -66,7 +66,7 @@ app.use(session(
             })
     }
 ));
-app.use('/api/productos-test',desafioFaker)
+//app.use('/api/productos-test',desafioFaker)
 app.use('/productos', routesProductos)
 app.use('/registro',registroRouter)
 app.use('/login',loginRouter)
