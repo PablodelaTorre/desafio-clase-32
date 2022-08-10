@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
 import http from 'http'
 const app = express()
 import multer from 'multer'
-import desafioFaker from "./desafioFaker.js"
+//import desafioFaker from "./desafioFaker.js"
 import routesProductos from "./src/routes/routes-productos.js"
 import routesMensajes from "./src/routes/routes-mensajes.js"
 import loginRouter from "./src/routes/login.js"
