@@ -13,16 +13,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // import { ioServer } from 'socket.io'
 import http from 'http'
-const app = express()
 import multer from 'multer'
-//import desafioFaker from "./desafioFaker.js"
-import routesProductos from "./src/routes/routes-productos.js"
-import routesMensajes from "./src/routes/routes-mensajes.js"
-import loginRouter from "./src/routes/login.js"
-import logoutRouter from "./src/routes/logout.js"
-import registroRouter from "./src/routes/registro.js"
-import infoRoutes from "./src/routes/info.js"
-import getRandom from "./src/routes/apiRandom.js"
+import routesMaster from "./src/routes/routesMaster.js"
 import 'dotenv/config'
 import passport from 'passport';
 import compression from 'compression';
@@ -30,6 +22,7 @@ import { logWarn } from './logger.js';
 import { logError } from './logger.js';
 import { logConsole } from './logger.js';
 
+const app = express()
 
 // yargs 
 
@@ -68,15 +61,7 @@ app.use(session(
             })
     }
 ));
-//app.use('/api/productos-test',desafioFaker)
-app.use('/productos', routesProductos)
-app.use('/registro',registroRouter)
-app.use('/login',loginRouter)
-app.use('/logout',logoutRouter)
-app.use('/info',infoRoutes)
-app.use('/api/random',getRandom)
-//app.use(passport.initialize())
-//app.use(passport.session())
+app.use('/',routesMaster)
 app.set('views','./src/views')
 app.set('view engine','ejs')
 
