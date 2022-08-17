@@ -30,7 +30,6 @@ const yarg = yargs(hideBin(process.argv))
 const args = yarg.alias({m:'modo',p:'puerto',d:'debug'}).default({m:'prod', p:0, d:'false'}).boolean('d').argv
 console.log(args)
 
-
 //variables del env
 
 const MONGO_USER = process.env.MONGO_USER;
