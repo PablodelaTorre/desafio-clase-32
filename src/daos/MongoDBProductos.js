@@ -1,4 +1,4 @@
-import MongoClass from "../contenedores/MongoClass.js";
+import MongoClass from "../contenedores/daos/MongoClass.js";
 import { schemaProductos } from "../models/ProductosSchema.js";
 
 export class MongoDBProductos extends MongoClass {
