@@ -13,6 +13,7 @@ const SENDINBLUE_PASS = process.env.SENDINBLUE_PASS
 const SENDINBLUE_USER = process.env.SENDINBLUE_USER
 const TWILIO_SID = process.env.TWILIO_SID
 const TWILIO_TOKEN = process.env.TWILIO_TOKEN
+const PHONE = process.env.PHONE
 
 router.get("/",async (req, res) => {
     logConsole.info(`${req.url}`)
@@ -54,8 +55,12 @@ router.post("/",async (req, res) => {
             `,
         })
 
-        twilio(`${TWILIO_SID}`,`${TWILIO_TOKEN}`)
-
+        const twilioMessage = twilio(`${TWILIO_SID}`,`${TWILIO_TOKEN}`)
+        twilioMessage.messages.create({
+            body:'Hola, probando',
+            from:'whatsapp:+12406963697',
+            to:`whatsapp:${PHONE}`,
+        })
 
         res.send("Mail enviado con éxito")
 
