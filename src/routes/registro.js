@@ -2,6 +2,7 @@ import { Router } from "express";
 import { logConsole } from "../../logger.js";
 import nodemailer from "nodemailer"
 import 'dotenv/config'
+import twilio from "twilio";
 //import passport from "passport";
 
 const router = Router();
@@ -10,6 +11,8 @@ export const usuarios = []
 
 const SENDINBLUE_PASS = process.env.SENDINBLUE_PASS
 const SENDINBLUE_USER = process.env.SENDINBLUE_USER
+const TWILIO_SID = process.env.TWILIO_SID
+const TWILIO_TOKEN = process.env.TWILIO_TOKEN
 
 router.get("/",async (req, res) => {
     logConsole.info(`${req.url}`)
@@ -50,6 +53,10 @@ router.post("/",async (req, res) => {
                 <p>${req.body.telefono}</p>
             `,
         })
+
+        twilio(`${TWILIO_SID}`,`${TWILIO_TOKEN}`)
+
+
         res.send("Mail enviado con éxito")
 
     } catch (error) {
