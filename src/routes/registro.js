@@ -51,11 +51,10 @@ router.post("/",async (req, res) => {
             `,
         })
         res.send("Mail enviado con éxito")
-        
+
     } catch (error) {
         res.status(500)
     }
-    
 });
 
 
