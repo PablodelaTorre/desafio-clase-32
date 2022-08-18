@@ -25,6 +25,7 @@
     "session-file-store": "^1.5.0",
     "socket.io": "^4.5.1",
     "sqlite3": "^5.0.8",
+    "twilio": "^3.80.1",
     "yargs": "^17.5.1"
   },
   "name": "pablo-de-la-torre-desafio-clase-22-2",
