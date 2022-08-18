@@ -1,11 +1,15 @@
 import { Router } from "express";
 import { logConsole } from "../../logger.js";
 import nodemailer from "nodemailer"
+import 'dotenv/config'
 //import passport from "passport";
 
 const router = Router();
 
 export const usuarios = []
+
+const SENDINBLUE_PASS = process.env.SENDINBLUE_PASS
+const SENDINBLUE_USER = process.env.SENDINBLUE_USER
 
 router.get("/",async (req, res) => {
     logConsole.info(`${req.url}`)
@@ -30,8 +34,8 @@ router.post("/",async (req, res) => {
             host: 'smtp-relay.sendinblue.com',
             port: 587,
             auth: {
-                user: 'delatorre.pablodaniel@gmail.com',
-                pass: '1Y9IzpG8vgtH34O2'
+                user: `${SENDINBLUE_USER}`,
+                pass: `${SENDINBLUE_PASS}`
             }
         });
     
