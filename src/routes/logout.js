@@ -1,20 +1,15 @@
 import { Router } from "express";
+import { destruirSesion } from "../controllers/logout.js";
 import { logConsole } from "../../logger.js";
 
 const router = Router();
 
-router.get("/", (req, res) => {
+router.get("/",async (req, res) => {
     logConsole.info(`${req.url}`)
     logConsole.info(`${req.method}`)
     const nombre = req.session.nombre;
     res.render("./partials/logout", { nombre });
-    req.session.destroy((err) => {
-        if (!err) { 
-            console.log("Session destroyed");
-        } else {
-            res.send({ status: "Error al borrar session" });
-        }
-    });  
+    await destruirSesion(req)
 });
 
 
