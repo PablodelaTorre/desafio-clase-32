@@ -62,7 +62,8 @@ const productosRouter = Router();
 //         res.status(500).json({message: err.message});
 //     }
 // });
-    //Con websocket
+    
+//Con websocket
 
 class Container {
     constructor(){
