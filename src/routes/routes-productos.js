@@ -7,6 +7,7 @@ import { logError } from '../../logger.js'
 const productosRouter = Router();
 
 //mongodb
+
 // productosRouter.get('/', async (req, res) => {
 //     try{
 //         const productos = await api.getAll();
