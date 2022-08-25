@@ -5,6 +5,7 @@ import { logConsole } from "../../logger.js";
 
 const router = Router();
 
+
 router.get("/", (req, res) => {
     logConsole.info(`${req.url}`)
     logConsole.info(`${req.method}`)
