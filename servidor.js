@@ -82,6 +82,7 @@ app.get('*', (req,res)=>{
     res.send("URL inexistente")
 })
 
+
 // socket io
 
 export const productos = []
