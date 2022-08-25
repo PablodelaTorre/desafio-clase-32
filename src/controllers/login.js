@@ -1,5 +1,6 @@
 import { usuarios } from "../routes/registro.js";
 
+
 export function loginUsuario(req,res) {
     const {nombre, password} = req.body
     const usuario = usuarios.find(usuario=>usuario.nombre===nombre)
