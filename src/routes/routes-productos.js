@@ -1,9 +1,67 @@
 import { Router } from 'express'
 import { productos } from '../../servidor.js'
+import { productosDao as api } from '../daos/index.js';
 import { logConsole } from '../../logger.js'
 import { logError } from '../../logger.js'
 
-const router = Router()
+const productosRouter = Router();
+
+//mongodb
+// productosRouter.get('/', async (req, res) => {
+//     try{
+//         const productos = await api.getAll();
+//         productos? res.status(200).json(productos) : res.status(404).json({message: 'No hay productos disponibles'});
+//     }catch (err){
+//         res.status(500).json({message: err.message});
+//     }
+// });
+
+// productosRouter.get('/:id', async (req, res) => {
+//     try{
+//         const producto = await api.getOne(req.params.id);
+//         producto? res.status(200).json(producto) : res.status(404).json({message: 'Producto no encontrado. id: ' + req.params.id});
+//     }
+//     catch (err){
+//         res.status(500).json({message: err.message});
+//     }
+// });
+
+// productosRouter.post('/', async (req, res) => {
+//     try{
+//         const nuevoProducto = await api.create(req.body);
+//         res.status(201).json({
+//             message: 'Producto creado con éxito',
+//             producto: nuevoProducto});
+//     }catch (err){
+//         res.status(500).json({message: err.message});
+//     }
+// });
+
+// productosRouter.put('/:id', async (req, res) => {
+//     try{
+//         const productoActualizado = await api.update(req.params.id, req.body);
+//         res.json({
+//             message: 'Producto actualizado correctamente',
+//             id: productoActualizado._id
+//             });
+//     }catch (err){
+//         res.status(500).json({message: err.message});
+//     }
+// });
+
+// productosRouter.delete('/:id', async (req, res) => {
+//     try{
+//         const productoBorrado = await api.delete(req.params.id);
+//         res.json({
+//             message: 'Producto borrado correctamente',
+//             id: productoBorrado._id
+//             });
+//     }
+//     catch (err){
+//         res.status(500).json({message: err.message});
+//     }
+// });
+    //Con websocket
 
 class Container {
     constructor(){
@@ -58,31 +116,31 @@ const containerProductos = new Container()
 //     res.json({products})
 // })
 
-router.get('/',(req,res) => {
+productosRouter.get('/',(req,res) => {
     logConsole.info(`${req.url}`)
     logConsole.info(`${req.method}`)
     logError.error('Error')
-    products = containerProductos.devolverP()
+    const products = containerProductos.devolverP()
     res.render('./partials/productos.ejs', {
         title:"Agregue un producto",
         products
     })
 })
 
-router.get('/:id',(req,res) => {
+productosRouter.get('/:id',(req,res) => {
     const { id } = req.params;
     const product = containerProductos.devolverPrId(id)
     product ? res.json({product}) : res.json({message: 'Producto no encontrado. Id: '+ id});
 })
 
-router.post('/', (req,res) => {
+productosRouter.post('/', (req,res) => {
     let producto = req.body
     const photo = req.file.filename
     containerProductos.guardarP(producto,photo)
     res.json({mensaje:"Producto agregado con éxito"})
 })
 
-router.put('/:id', (req,res) => {
+productosRouter.put('/:id', (req,res) => {
     const { id } = req.params
     const { body } = req
     const product = containerProductos.devolverPrId(id)
@@ -90,10 +148,10 @@ router.put('/:id', (req,res) => {
     res.json({message: 'Producto actualizado'})
 })
 
-router.delete('/:id', (req,res) => {
+productosRouter.delete('/:id', (req,res) => {
     const { id } = req.params;
     containerProductos.deleteP(id)
     res.json({mensaje:"producto eliminado con éxito"})
 })
 
-export default router
+export default productosRouter
