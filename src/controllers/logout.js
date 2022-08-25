@@ -1,5 +1,3 @@
-
-
 export function destruirSesion(req){
     req.session.destroy((err) => {
         if (!err) { 
