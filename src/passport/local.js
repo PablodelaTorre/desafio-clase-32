@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy } from "passport-local";
-import Usuarios from '../models/usuarios.js'
+import { usuariosSchema } from '../models/UsuariosSchema.js'
 
 const localStrategy = Strategy
 
