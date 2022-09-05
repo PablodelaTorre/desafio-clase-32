@@ -18,7 +18,6 @@ import 'dotenv/config'
 import passport from 'passport';
 import compression from 'compression';
 import { logWarn } from './logger.js';
-import { logError } from './logger.js';
 import { logConsole } from './logger.js';
 
 
@@ -104,11 +103,6 @@ io.on('connection',(socket)=>{
         io.sockets.emit('mensajes',mensajes)
     })
 })
-
-// const PORT = parseInt(process.argv[2]) || 8080
-// app.listen(PORT, () => {
-//     console.log(`Server on port ${PORT}`)
-// })
 
 // const PORT = parseInt(process.argv[2]) || 8080
 //     const server = httpServer.listen(process.env.PORT, () => {
