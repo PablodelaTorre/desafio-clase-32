@@ -18,5 +18,5 @@ switch (process.env.DB_CONNECTION) {
         })
     }
 
-    
-export { productosDao , mensajesDao }
+
+export { productosDao , carritosDao, mensajesDao }
